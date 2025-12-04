@@ -1,0 +1,28 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background rounded square -->
+  <rect width="32" height="32" rx="8" fill="url(#gradient1)"/>
+  
+  <!-- Document icon -->
+  <path d="M9 6h10l4 4v16a1 1 0 01-1 1H9a1 1 0 01-1-1V7a1 1 0 011-1z" fill="white" fill-opacity="0.9"/>
+  <path d="M19 6v4h4" fill="none" stroke="white" stroke-opacity="0.6" stroke-width="1"/>
+  
+  <!-- Lines representing text -->
+  <rect x="11" y="13" width="10" height="1.5" rx="0.75" fill="url(#gradient1)" fill-opacity="0.6"/>
+  <rect x="11" y="17" width="8" height="1.5" rx="0.75" fill="url(#gradient1)" fill-opacity="0.5"/>
+  <rect x="11" y="21" width="6" height="1.5" rx="0.75" fill="url(#gradient1)" fill-opacity="0.4"/>
+  
+  <!-- AI sparkle -->
+  <circle cx="24" cy="8" r="4" fill="url(#gradient2)"/>
+  <path d="M24 5v6M21 8h6" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

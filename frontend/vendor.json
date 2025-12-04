@@ -1,0 +1,38 @@
+[
+  {
+    "_id": {
+      "$oid": "692fe92fe8cd591a4a22dadf"
+    },
+    "name": "Alpha Technologies",
+    "company": "Alpha Technologies",
+    "email": "cartooncity77@gmail.com",
+    "phone": "+1-555-0106",
+    "category": "IT Services",
+    "address": "100 Innovation Drive, Austin, TX",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2025-12-03T07:39:27.557Z"
+    },
+    "updatedAt": {
+      "$date": "2025-12-04T04:49:04.585Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "692fe92fe8cd591a4a22dae0"
+    },
+    "name": "Quality First Vendors",
+    "company": "Quality First Vendors",
+    "email": "coder2502@gmail.com",
+    "phone": "+1-555-0107",
+    "category": "General",
+    "address": "250 Quality Lane, Seattle, WA",
+    "__v": 0,
+    "createdAt": {
+      "$date": "2025-12-03T07:39:27.557Z"
+    },
+    "updatedAt": {
+      "$date": "2025-12-04T04:49:05.108Z"
+    }
+  }
+]
