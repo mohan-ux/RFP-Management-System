@@ -938,7 +938,6 @@ For issues, questions, or suggestions:
 Made with ❤️ using AI-powered tools
 
 [Back to Top](#-ai-powered-rfp-management-system)
-
 </div>
 - Real-time WebSocket notifications
 - Multi-language support
