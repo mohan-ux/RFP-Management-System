@@ -144,7 +144,7 @@ npm run dev    # http://localhost:5173
 
 | Layer | Technology |
 |-------|------------|
-| **Frontend** | React 18, Vite, Tailwind CSS, Framer Motion, Axios |
+| **Frontend** | React 18, Vite, Tailwind CSS, Axios |
 | **Backend** | Node.js, Express.js, MongoDB, Mongoose |
 | **AI** | Google Gemini (gemini-2.5-flash → 1.5-flash → pro fallback) |
 | **Email** | Nodemailer (SMTP), IMAP (receiving) |
