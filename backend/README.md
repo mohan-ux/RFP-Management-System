@@ -1,172 +1,306 @@
-# RFP Management System - Backend
+# 🎯 AI-Powered RFP Management System
 
-Backend API server for the RFP Management System built with Node.js, Express, and MongoDB.
+> An intelligent, single-user web application that revolutionizes Request for Proposal (RFP) workflows through AI-powered automation, vendor management, and smart quote comparison.
 
-## Features
+<div align="center">
 
-- RESTful API for RFP, Vendor, and Proposal management
-- MongoDB database with Mongoose ODM
-- Email integration support (Nodemailer)
-- AI integration support (OpenAI)
-- Error handling middleware
-- CORS enabled
-- Request logging with Morgan
+![RFP Manager](https://img.shields.io/badge/version-1.0.0-purple?style=flat-square)
+![Node.js](https://img.shields.io/badge/Node.js-18+-green?style=flat-square)
+![React](https://img.shields.io/badge/React-18+-blue?style=flat-square)
+![MongoDB](https://img.shields.io/badge/MongoDB-6+-brightgreen?style=flat-square)
+![License](https://img.shields.io/badge/license-ISC-blue?style=flat-square)
 
-## Tech Stack
+</div>
 
-- **Runtime**: Node.js
-- **Framework**: Express.js
-- **Database**: MongoDB with Mongoose
-- **Email**: Nodemailer (configured for production)
-- **AI**: OpenAI API (configured for production)
+---
 
-## Installation
+## 📋 Table of Contents
 
-1. Install dependencies:
+- [🚀 Quick Start](#-quick-start)
+- [📸 Screenshots](#-screenshots)
+- [✨ Features](#-features)
+- [🛠️ Tech Stack](#-tech-stack)
+- [📚 API Documentation](#-api-documentation)
+- [🏗️ Project Structure](#-project-structure)
+- [🎯 Decisions & Assumptions](#-decisions--assumptions)
+- [🤖 AI Tools Usage](#-ai-tools-usage)
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- **Node.js**: v18.0.0+
+- **MongoDB**: v6.0+ (local or Atlas)
+- **Google Gemini API Key**
+- **Gmail Account** with App Password
+
+### Installation
+
+#### 1. Backend Setup
 ```bash
+git clone <repository-url>
+cd "RFP Management System/backend"
 npm install
 ```
 
-2. Configure environment variables:
-Create a `.env` file in the root directory (see `.env` for template)
-
-3. Start MongoDB:
-Make sure MongoDB is running on `mongodb://localhost:27017`
-
-4. Seed database (optional):
-```bash
-npm run seed
-```
-
-5. Start server:
-```bash
-# Development mode with auto-reload
-npm run dev
-
-# Production mode
-npm start
-```
-
-The server will start on `http://localhost:5000`
-
-## API Endpoints
-
-### RFP Endpoints
-- `GET /api/rfp` - Get all RFPs
-- `GET /api/rfp/:id` - Get RFP by ID
-- `POST /api/rfp` - Create new RFP
-- `POST /api/rfp/create-from-text` - Create RFP from text
-- `PUT /api/rfp/:id` - Update RFP
-- `DELETE /api/rfp/:id` - Delete RFP
-- `POST /api/rfp/:rfpId/send` - Send RFP to vendors
-- `PUT /api/rfp/:id/status` - Update RFP status
-- `POST /api/rfp/:rfpId/award` - Award RFP to vendor
-
-### Vendor Endpoints
-- `GET /api/vendors` - Get all vendors
-- `GET /api/vendors/:id` - Get vendor by ID
-- `POST /api/vendors` - Create new vendor
-- `PUT /api/vendors/:id` - Update vendor
-- `DELETE /api/vendors/:id` - Delete vendor
-
-### Proposal Endpoints
-- `GET /api/proposals` - Get all proposals
-- `GET /api/proposals/rfp/:rfpId` - Get proposals by RFP
-- `GET /api/proposals/:id` - Get proposal by ID
-- `POST /api/proposals/manual` - Create manual proposal
-- `PUT /api/proposals/:id` - Update proposal
-- `PUT /api/proposals/:id/status` - Update proposal status
-- `DELETE /api/proposals/:id` - Delete proposal
-- `POST /api/proposals/:id/reparse` - Reparse proposal with AI
-- `GET /api/proposals/rfp/:rfpId/compare` - Compare proposals
-
-### Email Endpoints
-- `POST /api/email/test-send` - Send test email
-- `POST /api/email/check-inbox` - Check inbox for proposals
-- `GET /api/email/status` - Get email service status
-- `POST /api/email/send-rfp/:rfpId` - Send RFP via email
-
-### AI Endpoints
-- `POST /api/ai/analyze-proposals/:rfpId` - Analyze proposals with AI
-- `POST /api/ai/generate-rfp` - Generate RFP from text
-- `POST /api/ai/parse-rfp` - Parse RFP text
-- `POST /api/ai/parse-proposal/:proposalId` - Parse proposal with AI
-
-## Project Structure
-
-```
-backend/
-├── config/
-│   └── db.js                 # MongoDB connection
-├── controllers/
-│   ├── ai.controller.js      # AI endpoints logic
-│   ├── email.controller.js   # Email endpoints logic
-│   ├── proposal.controller.js # Proposal CRUD
-│   ├── rfp.controller.js     # RFP CRUD
-│   └── vendor.controller.js  # Vendor CRUD
-├── middleware/
-│   └── errorHandler.js       # Error handling
-├── models/
-│   ├── Proposal.js           # Proposal schema
-│   ├── RFP.js                # RFP schema
-│   └── Vendor.js             # Vendor schema
-├── routes/
-│   ├── ai.routes.js          # AI routes
-│   ├── email.routes.js       # Email routes
-│   ├── proposal.routes.js    # Proposal routes
-│   ├── rfp.routes.js         # RFP routes
-│   └── vendor.routes.js      # Vendor routes
-├── .env                      # Environment variables
-├── package.json              # Dependencies
-├── seed.js                   # Database seeder
-└── server.js                 # Entry point
-```
-
-## Environment Variables
-
+Create `backend/.env`:
 ```env
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/rfp-management
-ALLOWED_ORIGINS=http://localhost:5173
+GEMINI_API_KEY=your-gemini-api-key
 
-# Optional: For production features
+# Email (SMTP)
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
 EMAIL_USER=your-email@gmail.com
-EMAIL_PASSWORD=your-app-password
+EMAIL_PASSWORD=your-gmail-app-password
 
-OPENAI_API_KEY=your-openai-key
-AI_MODEL=gpt-4
+# Email (IMAP)
+IMAP_HOST=imap.gmail.com
+IMAP_PORT=993
+IMAP_USER=your-email@gmail.com
+IMAP_PASSWORD=your-gmail-app-password
 ```
 
-## Database Models
+```bash
+npm run dev    # http://localhost:5000
+```
 
-### RFP Schema
-- title, description, status, deadline
-- budget (min, max, currency)
-- items, evaluationCriteria, terms
-- vendors (array), awardedVendor
-- timestamps
+#### 2. Frontend Setup
+```bash
+cd frontend
+npm install
+```
 
-### Vendor Schema
-- name, company, email (unique)
-- phone, category, address
-- timestamps
+Create `frontend/.env`:
+```env
+VITE_API_URL=http://localhost:5000/api
+```
 
-### Proposal Schema
-- rfpId, vendorId
-- price, deliveryTime, warranty, terms
-- status, aiScore, aiAnalysis
-- timestamps
+```bash
+npm run dev    # http://localhost:5173
+```
 
-## Development Notes
+### Gmail App Password
+1. Enable 2-Factor Authentication on Gmail
+2. Go to: Google Account → Security → App passwords
+3. Generate password for "Mail"
+4. Use the 16-character password in `.env`
 
-- The AI and Email features use mock implementations by default
-- To enable real AI features, add your OpenAI API key to `.env`
-- To enable email features, configure SMTP settings in `.env`
-- All API responses follow the format: `{ data: {...}, success: true }`
-- Errors are handled globally and return: `{ message: "...", success: false }`
+---
 
-## License
+## 📸 Screenshots
 
-ISC
+### Dashboard
+![Dashboard](./screenshots/01-dashboard.png)
+*RFP list with status badges and quick actions*
+
+### Step 1: Describe
+![Describe](./screenshots/04-step1-Describe.png)
+*Natural language input for AI to generate structured RFP*
+
+### Step 2: Review
+![Review](./screenshots/05-step2-review.png)
+*Edit AI-generated RFP fields*
+
+### Step 3: Vendors
+![Vendors](./screenshots/02-step3-vendors.png)
+*Select vendors and send RFP via email*
+
+### Step 4: Compare
+![Compare](./screenshots/03-step4-compare.png)
+*AI-powered comparison with recommendations*
+
+### Email Integration
+![Email](./screenshots/06-email-template.png)
+*Professional HTML email sent to vendors*
+
+---
+
+## ✨ Features
+
+| Step | Feature | Description |
+|------|---------|-------------|
+| **1** | **Describe** | Natural language input → AI generates structured RFP |
+| **2** | **Review** | Edit AI-generated RFP fields (title, budget, items, criteria) |
+| **3** | **Vendors** | Select vendors & send RFP via email |
+| **4** | **Compare** | Fetch responses, AI compares quotes & recommends best vendor |
+
+### AI Capabilities
+- **Generate RFP**: Natural language → Structured JSON
+- **Parse Emails**: Extract quote details from vendor responses
+- **Compare & Recommend**: Best price, best warranty, best overall with scoring
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| **Frontend** | React 18, Vite, Tailwind CSS, Framer Motion, Axios |
+| **Backend** | Node.js, Express.js, MongoDB, Mongoose |
+| **AI** | Google Gemini (gemini-2.5-flash → 1.5-flash → pro fallback) |
+| **Email** | Nodemailer (SMTP), IMAP (receiving) |
+
+---
+
+## 📚 API Documentation
+
+
+
+### RFP Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/rfp` | Get all RFPs |
+| `POST` | `/api/rfp` | Create new RFP |
+| `GET` | `/api/rfp/:id` | Get single RFP |
+| `DELETE` | `/api/rfp/:id` | Delete RFP |
+| `POST` | `/api/rfp/generate-from-text` | AI: Generate RFP from text |
+| `PUT` | `/api/rfp/:id/describe` | Save Step 1 data |
+| `PUT` | `/api/rfp/:id/review` | Save Step 2 data |
+| `POST` | `/api/rfp/:id/send-to-vendors` | Send RFP emails |
+| `GET` | `/api/rfp/:id/emails/inbox` | Fetch inbox emails |
+| `PUT` | `/api/rfp/:id/add-mail-response` | Add vendor response |
+| `POST` | `/api/rfp/:id/compare-quotes` | AI: Compare quotes |
+
+### Vendor Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/vendors` | Get all vendors |
+
+
+---
+
+## 🏗️ Project Structure
+
+```
+RFP Management System/
+├── backend/
+│   ├── config/db.js              # MongoDB connection
+│   ├── controllers/
+│   │   ├── rfp.controller.js     # RFP business logic
+│   │   └── vendor.controller.js  # Vendor CRUD
+│   ├── helpers/
+│   │   ├── email.helper.js       # SMTP/IMAP functions
+│   │   └── gemini.helper.js      # AI integration
+│   ├── models/
+│   │   ├── RFP.js                # RFP schema
+│   │   └── Vendor.js             # Vendor schema
+│   ├── routes/
+│   │   ├── rfp.routes.js
+│   │   └── vendor.routes.js
+│   ├── API_DOCUMENTATION.md
+│   └── server.js
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── common/           # Button, Card, Modal, etc.
+│   │   │   ├── rfp/              # RFP components
+│   │   │   └── vendor/           # Vendor components
+│   │   ├── pages/CreateRFP.jsx   # 4-step wizard
+│   │   ├── services/api.js       # API client
+│   │   ├── App.jsx
+│   │   └── index.css
+│   ├── vite.config.js
+│   └── tailwind.config.js
+│
+├── screenshots/                   # Application screenshots
+└── README.md
+```
+
+---
+
+## 🏛️ Architecture
+
+```
+┌─────────────────────────────────────────────────────┐
+│              FRONTEND (React + Vite)                │
+│  4-Step Wizard: Describe → Review → Vendors → Compare│
+└─────────────────────────────────────────────────────┘
+                        ↕ REST API
+┌─────────────────────────────────────────────────────┐
+│              BACKEND (Express.js)                   │
+│  Controllers → Helpers (AI, Email) → Models         │
+└─────────────────────────────────────────────────────┘
+        ↕                       ↕                ↕
+┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│   MongoDB    │    │  Gmail SMTP  │    │ Google Gemini│
+│   Database   │    │  Gmail IMAP  │    │     API      │
+└──────────────┘    └──────────────┘    └──────────────┘
+```
+
+---
+
+## 🎯 Decisions & Assumptions
+
+### Architecture Decisions
+
+| Decision | Rationale |
+|----------|-----------|
+| **Flexible LLM Schema** | `llm_response` uses Mixed type to accept any AI output |
+| **Model Fallback Chain** | gemini-2.5-flash → 1.5-flash → pro ensures reliability |
+| **Email Reference Pattern** | `[REF: <rfp_id>]` in subject for response tracking |
+| **Content Deduplication** | Hash-based comparison prevents duplicate responses |
+
+### RFP Status Flow
+```
+New → Review RFP → Vendors Choosed → Vendors Responded → View Quotes → Completed
+```
+
+### Assumptions
+- Single user system (no authentication)
+- Gmail as primary email provider
+- Vendors reply to same email thread
+- English language for AI prompts
+
+---
+
+## 🤖 AI Tools Usage
+
+### Tools Used in Development
+
+| Tool | Purpose |
+|------|---------|
+| **GitHub Copilot** | Code completion, boilerplate |
+| **Claude (Anthropic)** | Architecture, debugging, code review |
+| **ChatGPT** | Prompt engineering for Gemini |
+
+### Key AI Prompts
+
+**RFP Generation:**
+```
+Convert natural language to structured RFP JSON.
+CRITICAL: Only include fields with actual data from input.
+Do not generate placeholder values.
+```
+
+**Quote Comparison:**
+```
+Compare vendor quotes for RFP requirements.
+Return: best_price, best_warranty, best_overall with scores.
+Include comparison_table with pros/cons.
+```
+
+### Learnings
+- More specific prompts = better JSON output
+- Always clean markdown/code blocks from AI response
+- Multiple model fallback prevents failures
+
+---
+
+## 📄 License
+
+ISC License
+
+---
+
+<div align="center">
+
+**Built with ❤️ using AI-powered development**
+
+</div>
