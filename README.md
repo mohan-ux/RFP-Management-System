@@ -416,7 +416,7 @@ RFP Management System/
 - Create New RFP button
 
 ### Step 1: Describe - Natural Language Input
-![Describe Step](./screenshots/02-step1-describe.png)
+![Describe Step](./screenshots/04-step1-Describe.png)
 
 **Description:**
 User enters natural language describing their procurement needs. The system uses Google Gemini AI to understand and structure the request.
@@ -430,7 +430,7 @@ Need fast delivery and good warranty support
 ```
 
 ### Step 2: Review - AI Generated RFP Form
-![Review Step](./screenshots/03-step2-review.png)
+![Review Step](./screenshots/05-step2-review.png)
 
 **Features:**
 - AI-generated RFP details displayed in structured form
@@ -442,7 +442,7 @@ Need fast delivery and good warranty support
 - Payment terms
 
 ### Step 3: Vendors - Select Vendors
-![Vendor Selection](./screenshots/04-step3-vendors.png)
+![Vendor Selection](./screenshots/02-step3-vendors.png)
 
 **Functionality:**
 - Browse and select vendors from database
@@ -453,7 +453,7 @@ Need fast delivery and good warranty support
 - Send RFP to selected vendors
 
 ### Step 4: Compare - AI-Powered Comparison
-![Comparison View](./screenshots/05-step4-compare.png)
+![Comparison View](./screenshots/03-step4-compare.png)
 
 **AI Recommendations:**
 - **Best Price**: Vendor with lowest cost
