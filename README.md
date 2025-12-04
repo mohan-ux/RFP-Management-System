@@ -441,7 +441,7 @@ Need fast delivery and good warranty support
 - Evaluation criteria with weights
 - Payment terms
 
-### Step 3: Select Vendors
+### Step 3: Vendors - Select Vendors
 ![Vendor Selection](./screenshots/04-step3-vendors.png)
 
 **Functionality:**
@@ -452,7 +452,7 @@ Need fast delivery and good warranty support
 - Selected vendors highlighted
 - Send RFP to selected vendors
 
-### Step 4: AI-Powered Comparison
+### Step 4: Compare - AI-Powered Comparison
 ![Comparison View](./screenshots/05-step4-compare.png)
 
 **AI Recommendations:**
