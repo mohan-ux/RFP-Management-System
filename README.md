@@ -38,10 +38,15 @@
 
 ### Installation
 
-#### 1. Backend Setup
+#### 1. Clone the Repository
 ```bash
 git clone <repository-url>
-cd "RFP Management System/backend"
+cd "RFP Management System"
+```
+
+#### 2. Backend Setup
+```bash
+cd backend
 npm install
 ```
 
@@ -68,9 +73,9 @@ IMAP_PASSWORD=your-gmail-app-password
 npm run dev    # http://localhost:5000
 ```
 
-#### 2. Frontend Setup
+#### 3. Frontend Setup
 ```bash
-cd frontend
+cd ../frontend
 npm install
 ```
 
